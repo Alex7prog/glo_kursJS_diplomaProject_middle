@@ -12,13 +12,14 @@ const gift = () => {
 
 		if (target.closest('.fixed-gift')) {
 			toggleGift();
-			//btnCallBack.style.display = 'none';
+			btnCallBack.style.display = 'none';
 		}
 
 		if (target.closest('#gift')) {
 			if (target.matches('.close_icon') ||
-				target.matches('.overlay') ||
-				target.matches('.form-wrapper')) {
+			target.matches('.overlay') ||
+			target.matches('.form-wrapper') ||
+			target.matches('.close-btn')) {
 				toggleGift();
 			}
 		}
