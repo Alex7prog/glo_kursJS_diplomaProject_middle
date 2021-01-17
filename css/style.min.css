@@ -939,12 +939,24 @@ button {
 
 .menu-fix {
     position: fixed;
-    top: 0;
-    left: 0;
+    /* top: 0;
+    left: 0; */
+    right: 0px;
     width: 100vw;
-    z-index: 100
+    z-index: 1100
 }
-
+/* added JS programmer */
+.menu-burger-fix {
+    position: fixed;
+    display: block;
+    right: 15px;
+    z-index: 1100
+}
+.menu-burger-fix img {
+    background-color: #200a16;
+    border-radius: 4px
+}
+/*                    */
 header {
     max-height: 700px;
     position: relative
@@ -1208,6 +1220,11 @@ nav.popup-menu {
     left: 0;
     top: 0
 }
+/* added JS programmer */
+nav.popup-menu-active  {
+    display: flex
+}
+/*  */
 
 nav.popup-menu ul {
     margin: auto

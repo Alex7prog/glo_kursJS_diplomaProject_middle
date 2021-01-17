@@ -9,10 +9,8 @@ import gift from './modules/gift';
 import showMainSlider from './modules/showMainSlider';
 import showServicesSlider from './modules/showServicesSlider';
 import showGallerySlider from './modules/showGallerySlider';
-
-
-// window.addEventListener('DOMContentLoaded', () => {
-// }); //end of window.addEventListener()
+import showMenuBurger from './modules/showMenuBurger';
+import showPopupMenu from './modules/showPopupMenu';
 
 // menuClub (выпадающее меню ВЫБРАТЬ КЛУБ)
 menuClub();
@@ -34,5 +32,14 @@ showServicesSlider();
 
 //showServicesSlider
 showGallerySlider();
+
+//showMenuBurger
+showMenuBurger();
+
+//popupMenu
+showPopupMenu();
+
+
+
 
 
