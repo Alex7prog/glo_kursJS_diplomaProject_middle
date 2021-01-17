@@ -43,7 +43,7 @@ const showMainSlider = () => {
 		nextSlide();
 	};
 
-	const startSlide = (time = 1500) => {
+	const startSlide = (time = 3000) => {
 		interval = setInterval(autoPlaySlide, time);
 	};
 
