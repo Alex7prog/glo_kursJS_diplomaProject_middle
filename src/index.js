@@ -11,6 +11,7 @@ import showServicesSlider from './modules/showServicesSlider';
 import showGallerySlider from './modules/showGallerySlider';
 import showMenuBurger from './modules/showMenuBurger';
 import showPopupMenu from './modules/showPopupMenu';
+import calcPrice from './modules/calcPrice';
 
 // menuClub (выпадающее меню ВЫБРАТЬ КЛУБ)
 menuClub();
@@ -38,6 +39,9 @@ showMenuBurger();
 
 //popupMenu
 showPopupMenu();
+
+//calculator
+calcPrice();
 
 
 
