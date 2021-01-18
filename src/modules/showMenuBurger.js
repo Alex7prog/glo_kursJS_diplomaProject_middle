@@ -9,7 +9,6 @@ const showMenuBurger = () => {
 
 		if (widthWindow < 768) {
 			menuNav.style.display = 'none';
-			//menuTop.classList.add('menu-fix');
 			menuBurger.classList.add('menu-burger-fix');
 		} else {
 			menuNav.style.display = 'flex';
@@ -18,9 +17,6 @@ const showMenuBurger = () => {
 	});
 
 	window.addEventListener('scroll', () =>{
-		console.log('menuTop.scrollTop: ', menuTop.offsetTop);
-		console.log('menuTop.scrollTop: ', menuTop.scrollTop);
-		console.log(window.pageYOffset);
 		if (menuTopOffsetTop <= window.pageYOffset) {
 			menuTop.classList.add('menu-fix');
 		} else {
