@@ -9,8 +9,12 @@ const menuClub = () => {
 	document.addEventListener('click', event => {
 		const target = event.target;
 
+		clubList.style.zIndex = '1100';
+
 		if (target.closest('.clubs-list')) {
-			toggleMenuClub();
+			if (target.matches('p')) {
+				toggleMenuClub();
+			}
 		} else {
 			if (clubList.style.display === 'block') { toggleMenuClub(); }
 		}

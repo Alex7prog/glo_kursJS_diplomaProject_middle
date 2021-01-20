@@ -15,14 +15,14 @@ const sendForm = () => {
 
 	const patternInputForm = new Map([
 			['name', /[^А-яЁё\s]+$/],
-			['phone', /[^+?\d]/]
+			['phone', /[^+? \d]/]
 		]),
 		patternTestInputForm = new Map([
-			['name', /^[А-яЁё\s]+/],
+			['name', /^[А-яЁё]{2,}[\s]?[А-яЁё]*$/],
 			['phone', /^\+\d{12}$/]
 		]),
 		titleInputForm = new Map([
-			['name', 'Используйте ввод только кириллицы и пробелов.'],
+			['name', 'Используйте ввод только кириллицы и пробелов. Должно содержать минимум 2-е буквы.'],
 			['phone', 'Укажите номер телефона в формате: + 12 цифр или 12 цифр.']
 		]);
 
@@ -45,6 +45,9 @@ const sendForm = () => {
 		let formDataValid = true,
 			formRadioChecked = false;
 
+		if (form.querySelector('[placeholder="Промокод"]')) {
+			form.querySelector('[placeholder="Промокод"]').name = 'name-promo';
+		}
 
 		const inputErrorMessage = (element, errorText, check, timeMessage = 2500) => {
 			if (!check) {
@@ -99,7 +102,7 @@ const sendForm = () => {
 		form.querySelectorAll('[type="text"], [type="tel"]').forEach(elem => {
 
 			if (elem.placeholder !== 'Промокод') {
-
+				elem.value = elem.value.trim();
 				if (!patternTestInputForm.get(elem.name).test(elem.value)) {
 					formDataValid = false;
 					inputErrorMessage(elem, `Неверный формат данных. Введите "${elem.placeholder}" еще раз.`,
@@ -115,8 +118,12 @@ const sendForm = () => {
 		const formData = new FormData(form),
 			body = {};
 
+		if (form.id === 'card_order' && form.querySelector('#price-total')) {
+			formData.append('price-total', form.querySelector('#price-total').textContent);
+		}
+
 		formData.forEach((val, key) => {
-			if ((key !== 'form_name') && !(form.id === 'card_order' && key === 'club-name')) {
+			if (key !== 'form_name') {
 				body[key] = val;
 			}
 		});
@@ -142,11 +149,14 @@ const sendForm = () => {
 				messagePost(successMessage);
 
 				formInput.forEach(elem => {
-					elem.value = '';
+					if (elem.type === 'text' || elem.type === 'tel') {
+						elem.value = '';
+					}
 				});
 			})
 			.catch(error => {
 				messagePost(error);
+
 			});
 
 

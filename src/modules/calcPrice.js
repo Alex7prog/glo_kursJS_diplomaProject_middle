@@ -1,8 +1,7 @@
 //calculator
 const calcPrice = () => {
 	const cardOrder = document.getElementById('card_order'),
-		inputPromoCode = cardOrder.querySelector('[name="name"]'),
-		priceTotal = document.getElementById('price-total');
+		inputPromoCode = cardOrder.querySelector('[name="name"]');
 
 	const priceClub = {
 			'mozaika': { '1': 1999, '6': 9900, '9': 13900, '12': 19900 },
@@ -15,7 +14,15 @@ const calcPrice = () => {
 		discount = 0,
 		total = priceClub[selectedClub][selectedTime];
 
-	priceTotal.textContent = total;
+	let priceTotal;
+
+	if (document.getElementById('price-total')) {
+		priceTotal = document.getElementById('price-total');
+		priceTotal.textContent = total;
+	}	else {
+		return;
+	}
+
 
 	const animateTotal = () => {
 		let counter = +priceTotal.textContent,
@@ -67,6 +74,7 @@ const calcPrice = () => {
 		total = Math.round(priceClub[selectedClub][selectedTime] * (1 - discount));
 		animateTotal();
 	});
+
 }; // end of calcPrice()
 
 
