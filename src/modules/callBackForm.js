@@ -9,7 +9,7 @@ const callBackForm = () => {
 	document.addEventListener('click', event => {
 		const target = event.target;
 
-		if (target.closest('.callback-btn')) {
+		if (target.matches('.callback-btn') && !target.closest('form')) {
 			toggleCallBackForm();
 		}
 

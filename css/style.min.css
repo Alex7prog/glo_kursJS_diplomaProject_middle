@@ -1401,7 +1401,8 @@ nav.popup-menu .close-menu-btn img {
     bottom: 50px;
     left: 50%;
     margin-left: -65px;
-    z-index: 1000
+    /* JS programmer z-index: 1000 changed t0 1500*/
+    z-index: 1500
 }
 
 .slider-dots li {

@@ -12,6 +12,11 @@ import showGallerySlider from './modules/showGallerySlider';
 import showMenuBurger from './modules/showMenuBurger';
 import showPopupMenu from './modules/showPopupMenu';
 import calcPrice from './modules/calcPrice';
+import thanksForm from './modules/thanksForm';
+import sendForm from './modules/sendForm';
+import showButtonToTop from './modules/showButtonToTop';
+
+
 
 // menuClub (выпадающее меню ВЫБРАТЬ КЛУБ)
 menuClub();
@@ -42,6 +47,15 @@ showPopupMenu();
 
 //calculator
 calcPrice();
+
+//thanksForm
+thanksForm();
+
+//sendForm
+sendForm();
+
+//showButtonToTop
+showButtonToTop();
 
 
 

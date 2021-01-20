@@ -36,7 +36,6 @@ const calcPrice = () => {
 
 			if (counter === total) {
 				cancelAnimationFrame(requestId);
-				console.log('cancelAnimationFrame: OK');
 				return;
 			}
 			requestAnimationFrame(animateCount);
