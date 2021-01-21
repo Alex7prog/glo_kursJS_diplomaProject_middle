@@ -1,5 +1,5 @@
 //sendForm
-'use strict';
+
 const sendForm = () => {
 	const loadMessage = 'Передача данных...',
 		successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
@@ -25,6 +25,12 @@ const sendForm = () => {
 			['name', 'Используйте ввод только кириллицы и пробелов. Должно содержать минимум 2-е буквы.'],
 			['phone', 'Укажите номер телефона в формате: + 12 цифр или 12 цифр.']
 		]);
+
+	const priceClubCards = {
+		'mozaika': { '1s': 1999, '6s': 9900, '9s': 13900, '12d': 9900, '12s': 19900 },
+		'schelkovo': { '1s': 2999, '6s': 14990, '9s': 21990, '12d': 14990, '12s': 24990 }
+	};
+
 
 	statusMessage.style.cssText = 'font-size: 2rem; color: white;';
 
@@ -119,7 +125,7 @@ const sendForm = () => {
 			body = {};
 
 		if (form.id === 'card_order' && form.querySelector('#price-total')) {
-			formData.append('price-total', form.querySelector('#price-total').textContent);
+			body['price-total'] = form.querySelector('#price-total').textContent;
 		}
 
 		formData.forEach((val, key) => {
@@ -127,6 +133,13 @@ const sendForm = () => {
 				body[key] = val;
 			}
 		});
+
+		if (form.id === 'card_order' && form.querySelector('.cards-types')) {
+			const pageClub = document.querySelector('.club-head').querySelector('h3');
+			const cardsClubName = (pageClub.textContent === 'Тело Мозаика') ? 'mozaika' : 'schelkovo';
+			body['club-name'] = cardsClubName;
+			body['card-price'] = priceClubCards[cardsClubName][body['card-type']];
+		}
 
 		statusMessage.textContent = loadMessage;
 		form.appendChild(statusMessage);
